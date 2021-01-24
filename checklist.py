@@ -1,11 +1,12 @@
 #Simple Checklist
 import tkinter
 from tkinter import END, ANCHOR
+count=0
 
 #Define window
 root = tkinter.Tk()
-root.title('Simple Checklist')
-root.iconbitmap('check.ico')
+root.title('My Checklist')
+root.iconbitmap('resources/icons/checklist.ico')
 root.geometry('400x400')
 root.resizable(0,0)
 
@@ -18,7 +19,9 @@ root.config(bg=root_color)
 #Define functions
 def add_item():
     """Add an individual item to the listbox"""
-    my_listbox.insert(END, list_entry.get())
+    global count
+    count=count+1
+    my_listbox.insert(END,str(count) + ") " + list_entry.get())
     list_entry.delete(0, END)
 
 
@@ -28,7 +31,9 @@ def remove_item():
 
 def clear_list():
     """Delete all items from the listbox"""
+    global count
     my_listbox.delete(0, END)
+    count=0
 
 
 def save_list():
